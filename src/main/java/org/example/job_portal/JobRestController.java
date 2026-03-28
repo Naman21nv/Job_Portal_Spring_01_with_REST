@@ -61,9 +61,9 @@ public class JobRestController {
         return "Deleted successfully";
     }
 
-
-    public JobPost getJob(int postId){
-        return services.getJobs();
+    @GetMapping("posts/{postId}")
+    public JobPost getJob(@PathVariable("postId") int postId){
+        return services.getJobById(postId);
     }
 
 }

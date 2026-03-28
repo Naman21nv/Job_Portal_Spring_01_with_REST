@@ -52,11 +52,6 @@ public class JobService {
     }
 
     public JobPost getJobById(int postId) {
-        // This method is not implemented in the repository, but you could add it there.
-        // For now, we can just fetch all jobs and find the one with the matching ID.
-        return repo.getAllJobs().stream()
-                .filter(job -> job.getPostId() == postId)
-                .findFirst()
-                .orElse(null); // Returns null if no job is found with the given ID
+        return repo.getJob(postId);
     }
 }
