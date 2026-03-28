@@ -58,11 +58,12 @@ public class JobRepo {
         System.out.println("Job deleted with ID: " + postId);
     }
 
-    public JobPost getJob{
+    public JobPost getJob(int postId) {
         for(JobPost job : jobs){
-            if(job.getPostId() == postId)
+            if(job.getPostId() == postId) {
                 return job;
-
+            }
         }
+        return null;
     }
 }
