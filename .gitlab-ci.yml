@@ -1,0 +1,35 @@
+image: maven:3.9.12-eclipse-temurin-21
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+cache:
+  paths:
+    - .m2/repository/
+
+stages:
+  - build
+  - test
+  - package
+
+before_script:
+  - chmod +x mvnw
+
+build_job:
+  stage: build
+  script:
+    - ./mvnw clean compile
+
+test_job:
+  stage: test
+  script:
+    - ./mvnw test
+
+package_job:
+  stage: package
+  script:
+    - ./mvnw package -DskipTests
+  artifacts:
+    paths:
+      - target/*.jar
+    expire_in: 1 week
