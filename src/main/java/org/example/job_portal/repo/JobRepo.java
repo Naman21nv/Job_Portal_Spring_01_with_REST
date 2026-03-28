@@ -57,4 +57,12 @@ public class JobRepo {
         jobs.removeIf(job -> job.getPostId() == postId);
         System.out.println("Job deleted with ID: " + postId);
     }
+
+    public JobPost getJob{
+        for(JobPost job : jobs){
+            if(job.getPostId() == postId)
+                return job;
+
+        }
+    }
 }

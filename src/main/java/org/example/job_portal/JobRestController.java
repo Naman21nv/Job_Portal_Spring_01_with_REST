@@ -61,4 +61,9 @@ public class JobRestController {
         return "Deleted successfully";
     }
 
+
+    public JobPost getJob(int postId){
+        return services.getJobs();
+    }
+
 }
