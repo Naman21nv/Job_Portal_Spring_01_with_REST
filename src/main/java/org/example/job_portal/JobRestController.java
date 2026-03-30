@@ -34,6 +34,15 @@ public class JobRestController {
         this.services = services;
     }
 
+    /**
+     * Simple health/home endpoint so hitting http://localhost:8082/ in a browser
+     * shows something instead of 404.
+     */
+    @GetMapping("/")
+    public String home() {
+        return "Job Portal REST API is running. Try GET /posts";
+    }
+
 
     /**
      * This method handles GET requests to the "/posts" endpoint.
@@ -41,7 +50,7 @@ public class JobRestController {
      *
      * @return A list of JobPost objects.
      */
-    @GetMapping("posts")
+    @GetMapping("/posts")
     public List<JobPost> getAllJobs(){
         // This is a departure from traditional Spring MVC where you might return a view name (like a JSP page).
         // In a REST API, you return the data itself, which will be consumed by a client (e.g., a React or Angular application).
@@ -55,13 +64,13 @@ public class JobRestController {
      * @param postId The ID of the JobPost to delete.
      * @return A success message.
      */
-    @DeleteMapping("posts/{postId}")
+    @DeleteMapping("/posts/{postId}")
     public String deleteJob(@PathVariable("postId") int postId) {
         services.deleteJob(postId);
         return "Deleted successfully";
     }
 
-    @GetMapping("posts/{postId}")
+    @GetMapping("/posts/{postId}")
     public JobPost getJob(@PathVariable("postId") int postId){
         return services.getJobById(postId);
     }
